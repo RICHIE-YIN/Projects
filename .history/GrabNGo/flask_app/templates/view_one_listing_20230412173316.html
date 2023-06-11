@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+   
+    <title>View Listing</title>
+</head>
+<body>
+    <div class="container">
+        <div class="card mt-4">
+            {% if listing.image %}
+            <img src="data:image/jpeg;base64,{{ listing.image }}" class="card-img-top" alt="Listing Image">
+            {% endif %}
+            <div class="card-body">
+                <h5 class="card-title">{{ listing.title }}</h5>
+                <p class="card-text">
+                    Price: ${{ listing.price }}<br>
+                    Description: {{ listing.description }}<br>
+                    Condition: {{ listing.condition }}<br>
+                    Category: {{ listing.category }}<br>
+                    Location: {{ listing.location }}<br>
+                    Zip: {{ listing.zip }}<br>
+                    City: {{ listing.city }}<br>
+                    State: {{ listing.state }}<br>
+                    Status: {{ listing.status }}
+                </p>
+                {% if session.user_id != listing.user_id %}
+                <h4>Send a message to the seller:</h4>
+                <form action="/message/product/{{ listing.id }}/send" method="POST">
+                    <input type="hidden" name="recipient_id" value="{{ listing.user_id }}">
+                    <label for="content">Message:</label>
+                    <textarea name="content" id="content" cols="30" rows="5" required></textarea>
+                    <br>
+                    <input type="submit" class="btn btn-primary" value="Send Message">
+                </form>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</body>
+</html>

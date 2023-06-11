@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    {% extends 'base.html' %}
+    {% block content %}
+        <h1>Select Buyer to Rate/Review</h1>
+        <p>Product: {{ product.title }}</p>
+        <form action="/listings/{{ product.id }}/rate_review" method="POST">
+            {% for message in messages %}
+                <div>
+                    <input type="radio" id="buyer{{ message.id }}" name="buyer_id" value="{{ message.id }}">
+                    <label for="buyer{{ message.id }}">{{ message.first_name }} {{ message.last_name }}</label>
+                </div>
+            {% endfor %}
+            <div>
+                <input type="radio" id="sold_elsewhere" name="buyer_id" value="0">
+                <label for="sold_elsewhere">Sold somewhere else</label>
+            </div>
+            <button type="submit">Submit</button>
+        </form>
+    {% endblock %}
+    
+</body>
+</html>

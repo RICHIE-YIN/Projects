@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>User Profile</title>
+</head>
+<body>
+    <h1>User Profile</h1>
+    <ul>
+        <li><strong>Bio:</strong> {{ profile.bio }}</li>
+        <li><strong>Location:</strong> {{ profile.location }}</li>
+        <li><strong>Profile Name:</strong> {{ profile.profile_name }}</li>
+        <li><strong>Email:</strong> {{ profile.email }}</li>
+        <li><strong>Phone:</strong> {{ profile.phone }}</li>
+        <li><strong>Profile Picture:</strong> <img src="data:image/jpg;base64,{{ profile.profile_picture }}" alt="Profile Picture"></li>
+    </ul>
+</body>
+</html>
+

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Listing</title>
+    <!-- Add Bootstrap CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-pzjw8f+ua7Kw1TIq0v8FqFjcJ6pajs/rfdfs3SO+kD4Ck5BdPtF+to8xMko00I3B" crossorigin="anonymous">
+    <!-- Add Bootstrap JavaScript and its dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSS_GFpoO/uxCkwh5D6pJZRKorrICT7zE5F6U5vxz9X8Q+ff9G0/" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js" integrity="sha384-eMNCOe7tC1doHpGoJtKh7z7lGz7fuP4F8nfdFvAOA6Gg/z6Y5J6XqqyGXYM2ntX7" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-M7XA0bDp_zHN1Dz_ORpWotrAF64N1g4WOgJRYW_i0q3v8he_ED7LpE8GJpaJfE5" crossorigin="anonymous"></script>
+</head>
+<body class="container mt-5">
+    <h1 class="mb-4">Welcome {{ session.first_name }}</h1>
+    <div class="card">
+        <div class="card-body">
+            <h3 class="card-title">{{ listing.title }}</h3>
+            <h4>Price: ${{ listing.price }}</h4>
+            <h4>Description: {{ listing.description }}</h4>
+            <h4>Condition: {{ listing.condition }}</h4>
+            <h4>Category: {{ listing.category }}</h4>
+            <h4>Location: {{ listing.location }}</h4>
+            <h4>Zip: {{ listing.zip }}</h4>
+            <h4>City: {{ listing.city }}</h4>
+            <h4>State: {{ listing.state }}</h4>
+            <h4>Status: {{ listing.status }}</h4>
+
+            {% if listing.image %}
+            <img src="data:image/jpeg;base64,{{ listing.image }}" alt="Listing Image" class="img-fluid">
+            {% endif %}
+
+    {% if session.user_id != listing.user_id %}
+    <h4>Send a message to the seller:</h4>
+    <form action="/message/product/{{ listing.id }}/send" method="POST">
+        <input type="hidden" name="recipient_id" value="{{ listing.user_id }}">
+        <label for="content">Message:</label>
+        <textarea name="content" id="content" cols="30" rows="5" required></textarea>
+        <br>
+        <input type="submit" value="Send Message">
+    </form>
+    {% endif %}
+</body>
+</html>

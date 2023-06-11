@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conversations</title>
+</head>
+<body>
+    <h1>Your Conversations</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Contact</th>
+                <th>Product</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for contact, product in zip(contacts, products) %}
+                <tr>
+                    <td><a href="/conversation/product/{{ product.id }}/contact/{{ contact.id }}">{{ contact.first_name }} {{ contact.last_name }}</a></td>
+                    <td>{{ product.name }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <a href="/">Go Back</a>
+</body>
+</html>

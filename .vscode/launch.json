@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-JobprojectApplication<jobproject>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "richie.jobproject.JobprojectApplication",
+            "projectName": "jobproject",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}

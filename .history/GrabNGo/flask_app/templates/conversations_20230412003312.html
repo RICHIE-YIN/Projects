@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conversations</title>
+</head>
+<body>
+    <h1>Conversations</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Contact</th>
+                <th>Product</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for conversation in conversations %}
+            <tr>
+                <td>{{ conversation['contact_first_name'] }} {{ conversation['contact_last_name'] }}</td>
+                <td>{{ conversation['product_name'] }}</td>
+                <td><a href="/conversation/{{ conversation['contact_id'] }}/product/{{ conversation['product_id'] }}">View Conversation</a></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="/">Go Back</a>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Message Product</title>
+</head>
+<body>
+    <h1>Message regarding: {{ product.name }}</h1>
+    <h3>Seller: {{ recipient.first_name }} {{ recipient.last_name }}</h3>
+
+    <h2>Conversations:</h2>
+    <ul>
+        {% for conversation in conversations %}
+            <li><a href="/message/product/{{ product.id }}/{{ conversation.recipient_id }}">{{ conversation.recipient_name }}</a></li>
+        {% endfor %}
+    </ul>
+
+    <h2>Send a message:</h2>
+    <form action="/message/product/{{ product.id }}/send" method="post">
+        <input type="hidden" name="recipient_id" value="{{ recipient.id }}">
+        <label for="content">Message:</label>
+        <textarea name="content" id="content" rows="5" cols="50" required></textarea>
+        <br>
+        <input type="submit" value="Send Message">
+    </form>
+
+    <a href="/">Go Back</a>
+</body>
+</html>

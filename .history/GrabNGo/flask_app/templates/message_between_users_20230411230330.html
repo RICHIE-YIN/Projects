@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Message Product</title>
+</head>
+<body>
+    <h1>Message regarding: {{ product.name }}</h1>
+    <h3>Seller: {{ recipient.first_name }} {{ recipient.last_name }}</h3>
+
+    <h2>Messages:</h2>
+    {% for message in messages %}
+    {{message.content}}
+        <!-- {% if message.sender_id == user.id %}
+            <p><strong>You:</strong> {{ message.content }}</p>
+        {% else %}
+            <p><strong>{{ recipient.first_name }}:</strong> {{ message.content }}</p>
+        {% endif %} -->
+    {% endfor %}
+
+    <h2>Send a message:</h2>
+    <form action="/message/product/{{ product.id }}/send" method="post">
+        <input type="hidden" name="recipient_id" value="{{ recipient.id }}">
+        <label for="content">Message:</label>
+        <textarea name="content" id="content" rows="5" cols="50" required></textarea>
+        <br>
+        <input type="submit" value="Send Message">
+    </form>
+
+    <a href="/">Go Back</a>
+</body>
+</html>

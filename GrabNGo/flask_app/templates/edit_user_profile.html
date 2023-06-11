@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit User Profile</title>
+</head>
+<body>
+    <div class="container">
+        <nav class="nav nav-pills nav-fill">
+        <a class="nav-link active" aria-current="page" href="/listings">All Listings</a>
+        <a class="nav-link" href="/listings/new">Create New Listing</a>
+        <a class="nav-link" href="/conversations">Messages</a>
+        <a class="nav-link" href="/userprofile">My Profile</a>
+        <a class="nav-link" href="/listings/user/{{session.user_id}}">My Listings</a>
+        <a class="nav-link" href="/logout">Logout</a>
+        </nav>
+        <h1>Edit User Profile</h1>
+        <form action="/profile/update" method="post" enctype="multipart/form-data">
+            <input type="hidden" name="user_id" value="{{ user_profile.user_id }}">
+            <label for="bio">Bio:</label>
+            <textarea name="bio" id="bio">{{ user_profile.bio }}</textarea><br>
+            <label for="location">Location:</label>
+            <input type="text" name="location" id="location" value="{{ user_profile.location }}"><br>
+            <label for="profile_name">Profile Name:</label>
+            <input type="text" name="profile_name" id="profile_name" value="{{ user_profile.profile_name }}"><br>
+            <label for="email">Email:</label>
+            <input type="email" name="email" id="email" value="{{ user_profile.email }}"><br>
+            <label for="phone">Phone:</label>
+            <input type="text" name="phone" id="phone" value="{{ user_profile.phone }}"><br>
+            <label for="profile_picture">Profile Picture:</label>
+            <input type="file" name="profile_picture"><br>
+            <button type="submit">Update Profile</button>
+        </form>
+    </div>
+
+</body>
+</html>
