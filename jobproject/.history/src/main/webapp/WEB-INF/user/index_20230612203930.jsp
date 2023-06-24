@@ -20,31 +20,30 @@
 <body>
     ${userId}
     <div class="container">
-<h1  class="align-content-center">Login and Registration</h1>
-    <div class="row">
-        <div class="col">
-            <h2>Register</h2>
-            <form:form action="/register" method="post" modelAttribute="newUser">
-                <div>
+    <h1 class="align-content-center">Welcome to Job Hunter!</h1>
+        <div class="row">
+            <div class="col-lg-6">
+                <h2>Register</h2>
+                <form:form action="/register" method="post" modelAttribute="newUser" class="mb-4">
                     <div class="form-group">
-                    <form:label path="userName">userName</form:label>
-                    <form:input  class="form-control" path="userName"/>
-                    <form:errors path="userName"/>
+                        <form:label path="userName">Username</form:label>
+                        <form:input class="form-control" path="userName"/>
+                        <form:errors path="userName"/>
                     </div>
                     <div class="form-group">
-                    <form:label path="email">email</form:label>
-                    <form:input  class="form-control" path="email"/>
-                    <form:errors path="email"/>
+                        <form:label path="email">Email</form:label>
+                        <form:input class="form-control" path="email"/>
+                        <form:errors path="email"/>
                     </div>
-                    <div>
-                    <form:label path="password">password</form:label>
-                    <form:input  class="form-control" path="password"/>
-                    <form:errors path="password"/>
+                    <div class="form-group" >
+                        <form:label path="password">Password</form:label>
+                        <form:password class="form-control" path="password" />
+                        <form:errors path="password"/>
                     </div>
-                    <div>
-                    <form:label path="confirm">confirm password</form:label>
-                    <form:input  class="form-control" path="confirm"/>
-                    <form:errors path="confirm"/>
+                    <div class="form-group">
+                        <form:label path="confirm">Confirm Password</form:label>
+                        <form:password class="form-control" path="confirm"/>
+                        <form:errors path="confirm"/>
                     </div>
                     <div class="form-group">
                         <form:label path="userType">User Type</form:label>
@@ -53,30 +52,26 @@
                             <form:option value="job_seeker">Looking for a job</form:option>
                         </form:select>
                     </div>
-                </div>
-                <input type="submit" value="register">
-            </form:form>
-        </div>
-        <div class="col">
-            <h2>Login</h2>
-            <div class="form-group">
+                    <input type="submit" value="Register" class="btn btn-primary">
+                </form:form>
+            </div>
+            <div class="col-lg-6">
+                <h2>Login</h2>
                 <form:form action="/login" method="post" modelAttribute="newLogin">
                     <div class="form-group">
-                        <form:label path="email">email</form:label>
-                        <form:input  class="form-control" path="email"/>
+                        <form:label path="email">Email</form:label>
+                        <form:input class="form-control" path="email"/>
                         <form:errors path="email"/>
                     </div>
-                    <div>
-                        <form:label path="password">password</form:label>
-                        <form:input  class="form-control" path="password"/>
+                    <div class="form-group">
+                        <form:label path="password">Password</form:label>
+                        <form:password class="form-control" path="password"/>
                         <form:errors path="password"/>
                     </div>
-                <input type="submit" value="login">
+                    <input type="submit" value="Login" class="btn btn-primary">
                 </form:form>
             </div>
         </div>
-
     </div>
-</div>
 </body>
 </html>

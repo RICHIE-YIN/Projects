@@ -14,7 +14,7 @@ public class JobprojectApplication {
 		SpringApplication.run(JobprojectApplication.class, args);
 	}
 
-	@Bean
+	 @Bean
     public TomcatServletWebServerFactory servletContainer() {
         TomcatServletWebServerFactory tomcat = new TomcatServletWebServerFactory();
         Connector ajpConnector = new Connector("AJP/1.3");

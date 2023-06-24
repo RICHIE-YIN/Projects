@@ -21,7 +21,7 @@
     ${userId}
     <div class="container">
     <h1 class="align-content-center">Welcome to Job Hunter!</h1>
-    <h5>Please register or log in below</h5>
+    <h5>Please register or log in</h5>
         <div class="row">
             <div class="col-lg-6">
                 <h2>Register</h2>
